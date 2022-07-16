@@ -2,14 +2,15 @@
 
 ## General Approach
 
-The Project was structured in Blocks, according to the Block-diagram. 
+The Project was structured in Blocks, according to the Block Diagram. 
 Each Block was programmed individually and tested on hardware. 
 For the ReadTach Module a extra Simulation-file was used as described later.
 The idea for the HardwareCircuits is from [Alex over at AEQ-Web] [1]
 
-Block Diagramm:  
+Block Diagram:  
 
-![] (https://mygit.th-deg.de/mp03422/sphinx-book-template/-/blob/main/Images/BlockDiagramm.PNG)
+![Diagram]
+(https://mygit.th-deg.de/mp03422/sphinx-book-template/-/blob/main/Images/BlockDiagramm.PNG)
 
 ## Individual Modules 
 
