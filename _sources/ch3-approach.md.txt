@@ -1,4 +1,28 @@
 # Approach
 
+## General Approach
+
+The Project was structured in Blocks, according to the Block-diagram. 
+Each Block was programmed individually and tested on hardware. 
+For the ReadTach Module a extra Simulation-file was used as described later.
+The idea for the HardwareCircuits is from [Alex over at AEQ-Web] [1]
+
+Block Diagramm:  
+
+![Block-diagramm] [https://mygit.th-deg.de/mp03422/sphinx-book-template/-/blob/main/Images/BlockDiagramm.PNG]
+
+## Individual Modules 
+
+### ReadTach
+
+
+## Hardware Circuit
+
+
+General Schematics 
+
+
 - What was your approach to the problem and what is your solution?
 - You should also include approaches that did not work.
+
+[1]: https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en
