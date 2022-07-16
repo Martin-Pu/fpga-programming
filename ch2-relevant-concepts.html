@@ -35,7 +35,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Approach" href="ch3-approach.html" />
-    <link rel="prev" title="The problem" href="ch1-problem.html" />
+    <link rel="prev" title="The Problem" href="ch1-problem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,7 +95,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="ch1-problem.html">
-   The problem
+   The Problem
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -238,12 +238,71 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voltage-divider">
+   Voltage Divider
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adc">
+   ADC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spi">
+   SPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operational-amplifier">
+   Operational Amplifier
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-collector-io-tach-signal-of-fan">
+   Open Collector IO / Tach Signal of Fan
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pt1000">
+   PT1000
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clock-divider">
+   Clock Divider
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seven-segment-display">
+   Seven Segment Display
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -255,6 +314,54 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voltage-divider">
+   Voltage Divider
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adc">
+   ADC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spi">
+   SPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operational-amplifier">
+   Operational Amplifier
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-collector-io-tach-signal-of-fan">
+   Open Collector IO / Tach Signal of Fan
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pt1000">
+   PT1000
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clock-divider">
+   Clock Divider
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seven-segment-display">
+   Seven Segment Display
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -264,7 +371,45 @@ title="Print to PDF"
                 
   <section id="relevant-concepts">
 <h1>Relevant concepts<a class="headerlink" href="#relevant-concepts" title="Permalink to this headline">#</a></h1>
+<section id="voltage-divider">
+<h2>Voltage Divider<a class="headerlink" href="#voltage-divider" title="Permalink to this headline">#</a></h2>
+<p>A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.</p>
+<p><strong>Insert Image here.</strong></p>
+<p>As shown in the Figure above, its just two Resistors in Series, and the output is taken</p>
+</section>
+<section id="adc">
+<h2>ADC<a class="headerlink" href="#adc" title="Permalink to this headline">#</a></h2>
+<p>ADC stands for Analog to Digital Converter. These kind of ICs are used where the analog world meats a Digital Processor or in this case FPGA.</p>
+<p>ADCs convert an Anolog Voltage into a digital Signal which is then processible by the FPGA.</p>
+<p>The ADC communicates with the FPGA (or Micro Controller) via a communication Protokoll like SPI or I2C</p>
+<p>In this work a MCP3201 is used, which is a single Channel 12bit ADC that communicates over SPI. The SPI Bus is explained in the following segment.</p>
+</section>
+<section id="spi">
+<h2>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">#</a></h2>
+<p>** Insert Image hereÜÜ</p>
+</section>
+<section id="operational-amplifier">
+<h2>Operational Amplifier<a class="headerlink" href="#operational-amplifier" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="open-collector-io-tach-signal-of-fan">
+<h2>Open Collector IO / Tach Signal of Fan<a class="headerlink" href="#open-collector-io-tach-signal-of-fan" title="Permalink to this headline">#</a></h2>
+<p>The Open Collector Input Output Pins, are often used in Micro Controllers or ICs.</p>
+<p>When active the device simply turns on an internal Mosfet, and connects the Pin to ground.</p>
+<p>Open Collectors are often used in combination with an external or internal Pull-Up Resistor. To whichever Voltage level the Resistor is connected is the maximum input Voltage for the external device.</p>
+<p>In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.</p>
+<p>This way the Fan outputs a 3.3V to Ground PWM Signal which is readable by the FPGA.</p>
+<p>The PWM Signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.</p>
+</section>
+<section id="pt1000">
+<h2>PT1000<a class="headerlink" href="#pt1000" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="clock-divider">
+<h2>Clock Divider<a class="headerlink" href="#clock-divider" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="seven-segment-display">
+<h2>Seven Segment Display<a class="headerlink" href="#seven-segment-display" title="Permalink to this headline">#</a></h2>
 <p>Introduce the relevant concepts to understand the problem and your solution.</p>
+</section>
 </section>
 
 
@@ -279,7 +424,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The problem</p>
+            <p class="prev-next-title">The Problem</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ch3-approach.html" title="next page">

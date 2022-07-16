@@ -5,7 +5,7 @@ In the end everything worked as intended.
 The stretch goal of a State Machine was left out, because it seemed unnecessary. 
 
 
-I uploaded the results to YouTube, which can be found [here](https://youtu.be/ZYJzqI10RaQ)
+I uploaded the results to **YouTube**, which can be found [here](https://youtu.be/ZYJzqI10RaQ)
 
 
 Results and takeaways.
