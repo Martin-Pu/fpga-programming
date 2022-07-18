@@ -7,15 +7,11 @@ Each Block was programmed individually and tested on hardware.
 For the ReadTach Module a extra Simulation-file was used as described later.
 The idea for the HardwareCircuits is from Alex over at [AEQ-Web] [1]
 
-Block Diagram:  
-
 ![Diagram](Images/BlockDiagramm.PNG "Block Diagram")
 
 
-![Charles J. Sharp, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Scarlet_darter_%28Crocothemis_erythraea%29_female_Bulgaria.jpg/320px-Scarlet_darter_%28Crocothemis_erythraea%29_female_Bulgaria.jpg)
-
-
 ## Individual Modules 
+
 
 ### ReadTach
 

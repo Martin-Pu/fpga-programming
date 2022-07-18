@@ -18,11 +18,13 @@ The ADC communicates with the FPGA (or Micro Controller) via a communication Pro
 
 In this work a MCP3201 is used, which is a single Channel 12bit ADC that communicates over SPI. The SPI Bus is explained in the following segment.
 
+
 ## SPI
 
 
-** Insert Image hereÜÜ 
 
+
+![SPI Communication] (Images/SPICommunication.PNG "SPI Communication Chart")
 
 
 ## Operational Amplifier
@@ -34,6 +36,8 @@ The Open Collector Input Output Pins, are often used in Micro Controllers or ICs
 When active the device simply turns on an internal Mosfet, and connects the Pin to ground.
 
 Open Collectors are often used in combination with an external or internal Pull-Up Resistor. To whichever Voltage level the Resistor is connected is the maximum input Voltage for the external device.
+
+![Open Collector on Fan Tach Signal] (Images/OpenCollector.PNG "Open Collector")
 
 In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.
 
