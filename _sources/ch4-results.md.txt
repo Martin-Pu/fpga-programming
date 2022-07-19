@@ -33,6 +33,6 @@ The FinalProject File contains the Code which was presented in the Video. You ca
 
 ## "The hard way" 
 
-You can use a makefile to generate the .bit file and upload it to the Boolean automaticly. For that you can follow the [instructions](https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project) from my proffesors Q&A page.
+You can use a makefile to generate the .bit file and upload it to the Boolean automaticaly. For that you can follow the [instructions](https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project) from my professors Q&A page.
 
-Depending on your skillset, for you this might be the easy way.
+Depending on your skillset, this might be the easy way for you.
