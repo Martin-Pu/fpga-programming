@@ -1,9 +1,10 @@
 # Results
 
+## General Results
+
 In the end everything worked as intended. 
 
 The stretch goal of a State Machine was left out, because it seemed unnecessary. 
-
 
 I uploaded the results to **YouTube**
 
@@ -11,9 +12,10 @@ I uploaded the results to **YouTube**
 
 
 
-# Takeaways
+## Takeaways
 
 In this project the basis for a future complex Watercooling Loop controler has been built. The developed modules can be used to expand to more than just one Fan, Temperature Sensors, and pumps.
+
 A few problems have been encounterd while developing the ReadTach and Conversion Modules, which deepend my understanding of the Vivado and Verilog development environment.
 
 In Future work, a more complex Control-Feedback-Loop will be developed to really take advantage of the sensor data, and take it above everything else that currently exists in the market.
@@ -21,9 +23,9 @@ In Future work, a more complex Control-Feedback-Loop will be developed to really
 I will develop and upload the future work in the coming months.
 
 
-# Using the Files 
+## Using the Files 
 
-## "The easy way"
+### "The easy way"
 
 If you don't have Vivado allready, install it. For that you can follow [this tutorial](https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec) from realdigital.org
 
@@ -31,7 +33,7 @@ Then you can clone the project from my [GitHub repository](https://github.com/Ma
 In the repository you find the project propsal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module. 
 The FinalProject File contains the Code which was presented in the Video. You can open it in the IDE by opening the FinalProject.xpr file. To programm the board you have to Open the Hardware Manager in the IDE (on the left), connect to the Boolean Board, and then upload the .bit file, located in *FpgaFanCtrl\FinalProject\FinalProject.runs\impl_1*
 
-## "The hard way" 
+### "The hard way" 
 
 You can use a makefile to generate the .bit file and upload it to the Boolean automaticaly. For that you can follow the [instructions](https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project) from my professors Q&A page.
 

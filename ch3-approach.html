@@ -113,21 +113,6 @@
    Results
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown_examples.html">
-   Markdown examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="spellcheck.html">
-   Spellcheck
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="editing_video.html">
-   Editing and embedding a video
-  </a>
- </li>
 </ul>
 
     </div>
@@ -271,6 +256,16 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spi">
+     SPI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-modules">
+     Conversion Modules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#readtach">
      ReadTach
     </a>
@@ -312,6 +307,16 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spi">
+     SPI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-modules">
+     Conversion Modules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#readtach">
      ReadTach
     </a>
@@ -337,21 +342,38 @@ title="Print to PDF"
 <h1>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">#</a></h1>
 <section id="general-approach">
 <h2>General Approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">#</a></h2>
-<p>The Project was structured in Blocks, according to the Block Diagram.
-Each Block was programmed individually and tested on hardware.
-For the ReadTach Module a extra Simulation-file was used as described later.
-The idea for the HardwareCircuits is from Alex over at [AEQ-Web] <a class="reference external" href="https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en">1</a></p>
+<p>To achieve high flexibilty for future expandability the Project was structured in Blocks, according to the Block Diagram.
+Each Block was programmed individually and tested on hardware before mooving on to the next Block.
+For the ReadTach Module a extra Simulation-file was used as described later.</p>
 <p><img alt="Diagram" src="_images/BlockDiagramm.PNG" /></p>
+<p>The approach was implement all modules in behavioral Verilog where possible.
+All the Modules were programmed in the Vivado IDE.
+Structural assignments were sparely used to connect wires and registers.</p>
+<p>The approach</p>
 </section>
 <section id="individual-modules">
 <h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">#</a></h2>
+<section id="spi">
+<h3>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">#</a></h3>
+<p>For this module a serial communication bus had to be created.</p>
+</section>
+<section id="conversion-modules">
+<h3>Conversion Modules<a class="headerlink" href="#conversion-modules" title="Permalink to this headline">#</a></h3>
+<p>The implementation here was straigt forward with behavioral Verilog.
+Tho problems were encountered when trying to divide by numbers, which is required with some formulas. It was discoverd that division is not directly possible in Verilog.
+A workaround approach was chosen where the number is multiplied by two divided by x, where x is the divisor. The result is then shifted by one bit to the right to divide by two.</p>
+</section>
 <section id="readtach">
 <h3>ReadTach<a class="headerlink" href="#readtach" title="Permalink to this headline">#</a></h3>
+<p>The approach to this Module was to use the external Tach signal received from the fan, as a clk signal for an always block.
+This approach didn't work because it is hardly possible and not recommended to use external signals as clock signals.</p>
 </section>
 </section>
 <section id="hardware-circuit">
 <h2>Hardware Circuit<a class="headerlink" href="#hardware-circuit" title="Permalink to this headline">#</a></h2>
-<p>General Schematics</p>
+<p>For the Hardware circuit inspiration was drawn from an article from [AEQ-Web] <a class="reference external" href="https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en">1</a>
+The interface to the Fan was implemented according to [specification for PWM Controlled Fans] <a class="reference external" href="https://www.glkinst.com/cables/cable_pics/4_Wire_PWM_Spec.pdf">2</a></p>
+<p>With these information a circuit for the full project could be developed.</p>
 <ul class="simple">
 <li><p>What was your approach to the problem and what is your solution?</p></li>
 <li><p>You should also include approaches that did not work.</p></li>

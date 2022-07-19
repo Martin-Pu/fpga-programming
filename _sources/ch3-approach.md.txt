@@ -2,27 +2,51 @@
 
 ## General Approach
 
-The Project was structured in Blocks, according to the Block Diagram. 
-Each Block was programmed individually and tested on hardware. 
+To achieve high flexibilty for future expandability the Project was structured in Blocks, according to the Block Diagram. 
+Each Block was programmed individually and tested on hardware before mooving on to the next Block. 
 For the ReadTach Module a extra Simulation-file was used as described later.
-The idea for the HardwareCircuits is from Alex over at [AEQ-Web] [1]
 
 ![Diagram](Images/BlockDiagramm.PNG "Block Diagram")
+
+The approach was implement all modules in behavioral Verilog where possible.
+All the Modules were programmed in the Vivado IDE.
+Structural assignments were sparely used to connect wires and registers. 
+
+The approach 
 
 
 ## Individual Modules 
 
 
+### SPI 
+
+For this module a serial communication bus had to be created. 
+
+
+### Conversion Modules 
+
+The implementation here was straigt forward with behavioral Verilog.
+Tho problems were encountered when trying to divide by numbers, which is required with some formulas. It was discoverd that division is not directly possible in Verilog.
+A workaround approach was chosen where the number is multiplied by two divided by x, where x is the divisor. The result is then shifted by one bit to the right to divide by two.
+
 ### ReadTach
+
+The approach to this Module was to use the external Tach signal received from the fan, as a clk signal for an always block.
+This approach didn't work because it is hardly possible and not recommended to use external signals as clock signals.
+
 
 
 ## Hardware Circuit
 
+For the Hardware circuit inspiration was drawn from an article from [AEQ-Web] [1]
+The interface to the Fan was implemented according to [specification for PWM Controlled Fans] [2]
 
-General Schematics 
+With these information a circuit for the full project could be developed.
+
 
 
 - What was your approach to the problem and what is your solution?
 - You should also include approaches that did not work.
 
 [1]: https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en
+[2]: https://www.glkinst.com/cables/cable_pics/4_Wire_PWM_Spec.pdf

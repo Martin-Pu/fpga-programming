@@ -4,7 +4,7 @@
 
 A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.
 
-**Insert Image here.**
+![Voltage Divider](Images/VoltageDivider.PNG "Open Collector")Insert Image here.
 
 As shown in the Figure above, its just two Resistors in Series, and the output is taken 
 
@@ -24,7 +24,7 @@ In this work a MCP3201 is used, which is a single Channel 12bit ADC that communi
 
 
 
-![SPI Communication] (Images/SPICommunication.PNG "SPI Communication Chart")
+![SPI Communication](Images/SPICommunication.PNG "SPI Communication Chart")
 
 
 ## Operational Amplifier
@@ -37,7 +37,7 @@ When active the device simply turns on an internal Mosfet, and connects the Pin 
 
 Open Collectors are often used in combination with an external or internal Pull-Up Resistor. To whichever Voltage level the Resistor is connected is the maximum input Voltage for the external device.
 
-![Open Collector on Fan Tach Signal] (Images/OpenCollector.PNG "Open Collector")
+![Open Collector on Fan Tach Signal](Images/OpenCollector.PNG "Open Collector")
 
 In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.
 
