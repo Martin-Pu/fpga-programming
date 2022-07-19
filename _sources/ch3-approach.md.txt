@@ -77,7 +77,7 @@ Here the seven Segment Driver developed during project 9 of the digital logic co
 
 The used architecture is described in this image:
 
-![SevenSegment](Images/SevenSegment.png "Seven Segment Architecture")
+![SevenSegment](Images/SevenSegment.PNG "Seven Segment Architecture")
 
 ## Hardware Circuit
 
