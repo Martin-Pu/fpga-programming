@@ -89,7 +89,7 @@ For a more in depth information on Seven Segment Displays on the boolean board c
 
 The PMod interface is a way to connect external peripherals to the boolean board. For this work PModA of the boolean board was used.  
 
-![PModA](Images/PModA.PNG "PModA Pinout")
+![PModA](Images/PmodA.png "PModA Pinout")
 
 For more information check out the [boolean Board Reference Manual](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21)
 
