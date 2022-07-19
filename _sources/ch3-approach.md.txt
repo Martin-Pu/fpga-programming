@@ -1,5 +1,13 @@
 # Approach
 
+## Specification
+
+Develop a Temperature based Fan controller with the following functions: 
+
+- Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develope data communication to Hardware.
+- Control standard 12V 4pin PWM Fan
+- Output Data visually via LEDs on the Boolean Board
+
 ## General Approach
 
 To achieve high flexibilty for future expandability the Project was structured in Blocks, according to the Block Diagram. 
@@ -12,29 +20,64 @@ The approach was implement all modules in behavioral Verilog where possible.
 All the Modules were programmed in the Vivado IDE.
 Structural assignments were sparely used to connect wires and registers. 
 
-The approach 
-
 
 ## Individual Modules 
 
+### SPI (SPIMCP3201)
 
-### SPI 
+For this module a serial communication bus had to be created. The SPI communication is given in the [datasheet](http://ww1.microchip.com/downloads/en/devicedoc/21290f.pdf)
 
-For this module a serial communication bus had to be created. 
+![Serial Kommunikation](Images/SPICommunication.PNG "Serial Communication")
 
+According to this timing diagramm, comunication was implemented.
+
+A 100 kHz clock divider was used to generate the SPI clock. 
+Another clock divider was used to generate a 1 Hz clock to sample the ADC once per second.  
+In the second clock divider the samples also get read.
+
+Because the ADC needs time to sample the data, the first two bits are floating and the third is a Null bit. Thats why in the code not all the 16 bit values of the received data are used. The last clock cycle is used to power down the ADC. 
+
+For debugging the bottom (0-11) LEDs were connected to the raw Data received by the ADC. 
 
 ### Conversion Modules 
 
 The implementation here was straigt forward with behavioral Verilog.
-Tho problems were encountered when trying to divide by numbers, which is required with some formulas. It was discoverd that division is not directly possible in Verilog.
-A workaround approach was chosen where the number is multiplied by two divided by x, where x is the divisor. The result is then shifted by one bit to the right to divide by two.
+Tho problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discoverd that division is not directly possible in Verilog.
+A workaround approach was chosen where the number is multiplied by 2/x, where x is the divisor. This factor got calculated on a calculator and then entered in the code. The result is then shifted by one bit to the right to divide by two.
+
+The formula for the Temperature Sensore had to be callitbrated. This was also done as described in [this][1] article. 
+
+Recapped a potentiometer was used to get the exact resistance value for different Temperatures, and the Value of the ADC was read for those. The potentiometer Value was calibrated with a potentiometer, so the temperature value could only be calibrated to its accuracy.
+
+#### Implementation
+
+Each module has Input data, Output Data, and a clk, at which rate the conversion has to be made. 
+Here the standard 100 MHz clock was used as clock
+
+#### Temperature to Duty Cycle
+
+For this conversion, for now a simple formula will be generated based on this Graph:
+
+![TemperatureGraph](Images/TemperatureGraph.PNG "Temperature Graph")
+
+For future work a feedback control loop should be developed.
+
 
 ### ReadTach
 
 The approach to this Module was to use the external Tach signal received from the fan, as a clk signal for an always block.
 This approach didn't work because it is hardly possible and not recommended to use external signals as clock signals.
 
+So the standard 
 
+
+### Seven Segment Driver
+
+Here the seven Segment Driver developed during project 9 of the digital logic course of realdigital.org was used. 
+
+The used architecture is described in this image:
+
+![SevenSegment]](Images/SevenSegment.png "Seven Segment Architecture")
 
 ## Hardware Circuit
 

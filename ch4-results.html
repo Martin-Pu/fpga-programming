@@ -34,6 +34,7 @@
     <link rel="shortcut icon" href="_static/apple_notes_icon_public_domain_via_wikimedia_commons.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Markdown examples" href="markdown_examples.html" />
     <link rel="prev" title="Approach" href="ch3-approach.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -110,6 +111,21 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown_examples.html">
+   Markdown examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spellcheck.html">
+   Spellcheck
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_video.html">
+   Editing and embedding a video
   </a>
  </li>
 </ul>
@@ -248,10 +264,27 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#general-results">
    General Results
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spi-spimcp3201">
+     SPI (SPIMCP3201)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-modules">
+     Conversion Modules
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#takeaways">
    Takeaways
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improovement-ideas">
+   Improovement Ideas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -294,10 +327,27 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#general-results">
    General Results
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spi-spimcp3201">
+     SPI (SPIMCP3201)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-modules">
+     Conversion Modules
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#takeaways">
    Takeaways
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improovement-ideas">
+   Improovement Ideas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -335,6 +385,17 @@ title="Print to PDF"
 <p>The stretch goal of a State Machine was left out, because it seemed unnecessary.</p>
 <p>I uploaded the results to <strong>YouTube</strong></p>
 <p><a class="reference external" href="https://youtu.be/ZYJzqI10RaQ"><img alt="Youtube Video" src="https://img.youtube.com/vi/ZYJzqI10RaQ/0.jpg" /></a></p>
+<section id="spi-spimcp3201">
+<h3>SPI (SPIMCP3201)<a class="headerlink" href="#spi-spimcp3201" title="Permalink to this headline">#</a></h3>
+<p>The FPGA can communicate to the MCP3201 ADC via SPI. By pulling the CS Pin low, the ADC sends its 12 bit data back over the serial MISO line.</p>
+<p>Another clock divider had to be used, to shift the clock to the right so the CS Pin and the clk Pin wouldn't go low at the same time. This could lead to a potential glitch due a time that is refered in the datasheet as Tsucs.</p>
+<p>The Communication was observed and verified via a logic analyzer:</p>
+<p><img alt="Logic Analyzer SPI" src="_images/LogicAnalyzerSPI.png" /></p>
+</section>
+<section id="conversion-modules">
+<h3>Conversion Modules<a class="headerlink" href="#conversion-modules" title="Permalink to this headline">#</a></h3>
+<p>The Temperature was read correctly by verifying it with another househould temperature.</p>
+</section>
 </section>
 <section id="takeaways">
 <h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">#</a></h2>
@@ -342,6 +403,14 @@ title="Print to PDF"
 <p>A few problems have been encounterd while developing the ReadTach and Conversion Modules, which deepend my understanding of the Vivado and Verilog development environment.</p>
 <p>In Future work, a more complex Control-Feedback-Loop will be developed to really take advantage of the sensor data, and take it above everything else that currently exists in the market.</p>
 <p>I will develop and upload the future work in the coming months.</p>
+</section>
+<section id="improovement-ideas">
+<h2>Improovement Ideas<a class="headerlink" href="#improovement-ideas" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>the natural overflow of numbers could be used for some of the Clock Dividers</p></li>
+<li><p>Using a multichannel ADC for multiple Temperature sensors could safe on hardware costs.</p></li>
+<li><p>Implementation of a Clock Divider Module, because the same block got used in multiple modules</p></li>
+</ul>
 </section>
 <section id="using-the-files">
 <h2>Using the Files<a class="headerlink" href="#using-the-files" title="Permalink to this headline">#</a></h2>
@@ -374,6 +443,13 @@ The FinalProject File contains the Code which was presented in the Video. You ca
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Approach</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="markdown_examples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markdown examples</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

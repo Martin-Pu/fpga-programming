@@ -4,9 +4,10 @@
 
 A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.
 
-![Voltage Divider](Images/VoltageDivider.PNG "Open Collector")Insert Image here.
+![Voltage Divider](Images/VoltageDivider.PNG "Open Collector").
 
-As shown in the Figure above, its just two Resistors in Series, and the output is taken 
+As shown in the Figure above, its just two Resistors in Series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage).
+
 
 ## ADC
 

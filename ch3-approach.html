@@ -113,6 +113,21 @@
    Results
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown_examples.html">
+   Markdown examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spellcheck.html">
+   Spellcheck
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_video.html">
+   Editing and embedding a video
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -246,6 +261,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specification">
+   Specification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-approach">
    General Approach
   </a>
@@ -256,18 +276,35 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spi">
-     SPI
+    <a class="reference internal nav-link" href="#spi-spimcp3201">
+     SPI (SPIMCP3201)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conversion-modules">
      Conversion Modules
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementation">
+       Implementation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#temperature-to-duty-cycle">
+       Temperature to Duty Cycle
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#readtach">
      ReadTach
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seven-segment-driver">
+     Seven Segment Driver
     </a>
    </li>
   </ul>
@@ -297,6 +334,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specification">
+   Specification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-approach">
    General Approach
   </a>
@@ -307,18 +349,35 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spi">
-     SPI
+    <a class="reference internal nav-link" href="#spi-spimcp3201">
+     SPI (SPIMCP3201)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conversion-modules">
      Conversion Modules
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementation">
+       Implementation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#temperature-to-duty-cycle">
+       Temperature to Duty Cycle
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#readtach">
      ReadTach
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seven-segment-driver">
+     Seven Segment Driver
     </a>
    </li>
   </ul>
@@ -340,6 +399,15 @@ title="Print to PDF"
                 
   <section id="approach">
 <h1>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">#</a></h1>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">#</a></h2>
+<p>Develop a Temperature based Fan controller with the following functions:</p>
+<ul class="simple">
+<li><p>Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develope data communication to Hardware.</p></li>
+<li><p>Control standard 12V 4pin PWM Fan</p></li>
+<li><p>Output Data visually via LEDs on the Boolean Board</p></li>
+</ul>
+</section>
 <section id="general-approach">
 <h2>General Approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">#</a></h2>
 <p>To achieve high flexibilty for future expandability the Project was structured in Blocks, according to the Block Diagram.
@@ -349,24 +417,50 @@ For the ReadTach Module a extra Simulation-file was used as described later.</p>
 <p>The approach was implement all modules in behavioral Verilog where possible.
 All the Modules were programmed in the Vivado IDE.
 Structural assignments were sparely used to connect wires and registers.</p>
-<p>The approach</p>
 </section>
 <section id="individual-modules">
 <h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">#</a></h2>
-<section id="spi">
-<h3>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">#</a></h3>
-<p>For this module a serial communication bus had to be created.</p>
+<section id="spi-spimcp3201">
+<h3>SPI (SPIMCP3201)<a class="headerlink" href="#spi-spimcp3201" title="Permalink to this headline">#</a></h3>
+<p>For this module a serial communication bus had to be created. The SPI communication is given in the <a class="reference external" href="http://ww1.microchip.com/downloads/en/devicedoc/21290f.pdf">datasheet</a></p>
+<p><img alt="Serial Kommunikation" src="_images/SPICommunication.PNG" /></p>
+<p>According to this timing diagramm, comunication was implemented.</p>
+<p>A 100 kHz clock divider was used to generate the SPI clock.
+Another clock divider was used to generate a 1 Hz clock to sample the ADC once per second.<br />
+In the second clock divider the samples also get read.</p>
+<p>Because the ADC needs time to sample the data, the first two bits are floating and the third is a Null bit. Thats why in the code not all the 16 bit values of the received data are used. The last clock cycle is used to power down the ADC.</p>
+<p>For debugging the bottom (0-11) LEDs were connected to the raw Data received by the ADC.</p>
 </section>
 <section id="conversion-modules">
 <h3>Conversion Modules<a class="headerlink" href="#conversion-modules" title="Permalink to this headline">#</a></h3>
 <p>The implementation here was straigt forward with behavioral Verilog.
-Tho problems were encountered when trying to divide by numbers, which is required with some formulas. It was discoverd that division is not directly possible in Verilog.
-A workaround approach was chosen where the number is multiplied by two divided by x, where x is the divisor. The result is then shifted by one bit to the right to divide by two.</p>
+Tho problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discoverd that division is not directly possible in Verilog.
+A workaround approach was chosen where the number is multiplied by 2/x, where x is the divisor. This factor got calculated on a calculator and then entered in the code. The result is then shifted by one bit to the right to divide by two.</p>
+<p>The formula for the Temperature Sensore had to be callitbrated. This was also done as described in <a class="reference external" href="https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en">this</a> article.</p>
+<p>Recapped a potentiometer was used to get the exact resistance value for different Temperatures, and the Value of the ADC was read for those. The potentiometer Value was calibrated with a potentiometer, so the temperature value could only be calibrated to its accuracy.</p>
+<section id="implementation">
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h4>
+<p>Each module has Input data, Output Data, and a clk, at which rate the conversion has to be made.
+Here the standard 100 MHz clock was used as clock</p>
+</section>
+<section id="temperature-to-duty-cycle">
+<h4>Temperature to Duty Cycle<a class="headerlink" href="#temperature-to-duty-cycle" title="Permalink to this headline">#</a></h4>
+<p>For this conversion, for now a simple formula will be generated based on this Graph:</p>
+<p><img alt="TemperatureGraph" src="Images/TemperatureGraph.PNG" /></p>
+<p>For future work a feedback control loop should be developed.</p>
+</section>
 </section>
 <section id="readtach">
 <h3>ReadTach<a class="headerlink" href="#readtach" title="Permalink to this headline">#</a></h3>
 <p>The approach to this Module was to use the external Tach signal received from the fan, as a clk signal for an always block.
 This approach didn't work because it is hardly possible and not recommended to use external signals as clock signals.</p>
+<p>So the standard</p>
+</section>
+<section id="seven-segment-driver">
+<h3>Seven Segment Driver<a class="headerlink" href="#seven-segment-driver" title="Permalink to this headline">#</a></h3>
+<p>Here the seven Segment Driver developed during project 9 of the digital logic course of realdigital.org was used.</p>
+<p>The used architecture is described in this image:</p>
+<p>![SevenSegment]](Images/SevenSegment.png &quot;Seven Segment Architecture&quot;)</p>
 </section>
 </section>
 <section id="hardware-circuit">

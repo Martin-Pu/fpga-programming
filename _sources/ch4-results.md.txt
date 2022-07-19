@@ -10,7 +10,19 @@ I uploaded the results to **YouTube**
 
 [![Youtube Video](https://img.youtube.com/vi/ZYJzqI10RaQ/0.jpg)](https://youtu.be/ZYJzqI10RaQ)
 
+### SPI (SPIMCP3201)
 
+The FPGA can communicate to the MCP3201 ADC via SPI. By pulling the CS Pin low, the ADC sends its 12 bit data back over the serial MISO line.
+
+Another clock divider had to be used, to shift the clock to the right so the CS Pin and the clk Pin wouldn't go low at the same time. This could lead to a potential glitch due a time that is refered in the datasheet as Tsucs.
+
+The Communication was observed and verified via a logic analyzer:
+
+![Logic Analyzer SPI](Images/LogicAnalyzerSPI.png "LogicAnalyzerSPI")
+
+### Conversion Modules 
+
+The Temperature was read correctly by verifying it with another househould temperature.  
 
 ## Takeaways
 
@@ -22,6 +34,11 @@ In Future work, a more complex Control-Feedback-Loop will be developed to really
 
 I will develop and upload the future work in the coming months.
 
+## Improovement Ideas
+
+ - the natural overflow of numbers could be used for some of the Clock Dividers
+ - Using a multichannel ADC for multiple Temperature sensors could safe on hardware costs.
+ - Implementation of a Clock Divider Module, because the same block got used in multiple modules
 
 ## Using the Files 
 
