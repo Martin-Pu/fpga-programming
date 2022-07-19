@@ -6,6 +6,8 @@ A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, 
 
 It uses the simple principle of a voltage drop across a resistor. 
 
+<img src="Images/VoltageDivider.PNG " alt="Voltage Divider" width="200"/>
+
 ![Voltage Divider](Images/VoltageDivider.PNG "Voltage Divider").
 
 As shown in the figure above, its just two resistors in series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage, the lower one Ground).
