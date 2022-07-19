@@ -404,7 +404,7 @@ title="Print to PDF"
 <p>The Open Collector Input Output Pins, are often used in Micro Controllers or ICs.</p>
 <p>When active the device simply turns on an internal Mosfet, and connects the Pin to ground.</p>
 <p>Open Collectors are often used in combination with an external or internal Pull-Up Resistor. To whichever Voltage level the Resistor is connected is the maximum input Voltage for the external device.</p>
-<p><img alt="Open Collector on Fan Tach Signal" src="Images/OpenCollector.PNG" /></p>
+<p><img alt="Open Collector on Fan Tach Signal" src="_images/OpenCollector.PNG" /></p>
 <p>In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.</p>
 <p>This way the Fan outputs a 3.3V to Ground PWM Signal which is readable by the FPGA.</p>
 <p>The PWM signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.</p>
@@ -429,7 +429,7 @@ Alternatively, for a more precise clock the counter can be checked if it has ach
 <section id="pmod">
 <h2>PMod<a class="headerlink" href="#pmod" title="Permalink to this headline">#</a></h2>
 <p>The PMod interface is a way to connect external peripherals to the boolean board. For this work PModA of the boolean board was used.</p>
-<p><img alt="PModA" src="_images/PModA.png" /></p>
+<p><img alt="PModA" src="_images/PModA.PNG" /></p>
 <p>For more information check out the <a class="reference external" href="https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21">boolean Board Reference Manual</a></p>
 <p>From the reference manual I used the pinout to connect the Connectors in my Constraint File.</p>
 </section>
