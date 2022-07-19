@@ -223,12 +223,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specification">
+   Specification
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -240,6 +264,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specification">
+   Specification
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -255,9 +292,18 @@ An ESP32 was chosen, due to the embedded Bluetooth capability for software acces
 Still the IO-Pins (and PWM-Channels) ended up not being enough (10x Fans with PWM and Tach Signal, 2x Pumps, Sensors, and so on). Status indication could also not be implemented.</p>
 <p>Using an FPGA gives access to one of its big advantages: A large number of IO-Pins</p>
 <p>The main challenge of the project is the implementation of a Temperature Readout from an external Temperature Sensor.
-For this a SPI interface has to be programmed to an ADC. The received value of the ADC which represents Temperature, is not in the correct format yet and has to be converted to Temperature via multiple conversion.
+For this a SPI interface has to be programmed to an ADC. The received value of the ADC which represents Temperature, is not in the correct format yet and has to be converted to Temperature via multiple conversions.
 This circuit has to be calibrated to account for Resistor tolerances.
 At last a simple control algorithm has to be programmed, which outputs a PWM Signal based on Temperature to Control Fans or Pumps.</p>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">#</a></h2>
+<p>Develop a Temperature based Fan controller with the following functions:</p>
+<ul class="simple">
+<li><p>Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develop data communication to Hardware.</p></li>
+<li><p>Control standard 12V 4pin PWM Fan</p></li>
+<li><p>Output Data visually via LEDs and Seven Segment Display on the Boolean Board</p></li>
+</ul>
+</section>
 </section>
 
 

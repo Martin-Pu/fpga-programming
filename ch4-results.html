@@ -375,8 +375,8 @@ title="Print to PDF"
 <h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h1>
 <section id="general-results">
 <h2>General Results<a class="headerlink" href="#general-results" title="Permalink to this headline">#</a></h2>
-<p>In the end everything worked as intended.</p>
-<p>The stretch goal of a State Machine was left out, because it seemed unnecessary.</p>
+<p>In the end everything worked as intended and even 2 of 3 stretch goals were implemented</p>
+<p>The stretch goal of a State Machine was left out, because it seemed unnecessary as only Error Messages would have been useful.</p>
 <p>I uploaded the results to <strong>YouTube</strong></p>
 <p><a class="reference external" href="https://youtu.be/ZYJzqI10RaQ"><img alt="Youtube Video" src="https://img.youtube.com/vi/ZYJzqI10RaQ/0.jpg" /></a></p>
 <section id="schematics">
@@ -411,13 +411,14 @@ title="Print to PDF"
 <li><p>the natural overflow of numbers could be used for some of the Clock Dividers</p></li>
 <li><p>Using a multichannel ADC for multiple Temperature sensors could safe on hardware costs.</p></li>
 <li><p>Implementation of a Clock Divider Module, because the same block got used in multiple modules</p></li>
+<li><p>achieve higher resolution of RPM</p></li>
 </ul>
 </section>
 <section id="using-the-files">
 <h2>Using the Files<a class="headerlink" href="#using-the-files" title="Permalink to this headline">#</a></h2>
 <section id="the-easy-way">
 <h3>&quot;The easy way&quot;<a class="headerlink" href="#the-easy-way" title="Permalink to this headline">#</a></h3>
-<p>If you don't have Vivado already, install it. For that you can follow <a class="reference external" href="https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec">this tutorial</a> from realdigital.org</p>
+<p>If you don't have Vivado already, install it. You can follow <a class="reference external" href="https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec">this tutorial</a> from realdigital.org</p>
 <p>Then you can clone the project from my <a class="reference external" href="https://github.com/Martin-Pu/FpgaFanCtrl">GitHub repository</a> or download the zip and unpack it.
 In the repository you find the project proposal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module.
 The FinalProject File contains the Code which was presented in the Video. You can open it in the IDE by opening the FinalProject.xpr file. To program the board you have to Open the Hardware Manager in the IDE (on the left), connect to the Boolean Board, and then upload the .bit file, located in <em>FpgaFanCtrl\FinalProject\FinalProject.runs\impl_1</em></p>

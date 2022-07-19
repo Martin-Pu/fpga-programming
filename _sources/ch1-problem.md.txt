@@ -8,6 +8,14 @@ Still the IO-Pins (and PWM-Channels) ended up not being enough (10x Fans with PW
 Using an FPGA gives access to one of its big advantages: A large number of IO-Pins 
 
 The main challenge of the project is the implementation of a Temperature Readout from an external Temperature Sensor.
-For this a SPI interface has to be programmed to an ADC. The received value of the ADC which represents Temperature, is not in the correct format yet and has to be converted to Temperature via multiple conversion.
+For this a SPI interface has to be programmed to an ADC. The received value of the ADC which represents Temperature, is not in the correct format yet and has to be converted to Temperature via multiple conversions.
 This circuit has to be calibrated to account for Resistor tolerances. 
 At last a simple control algorithm has to be programmed, which outputs a PWM Signal based on Temperature to Control Fans or Pumps.
+
+## Specification
+
+Develop a Temperature based Fan controller with the following functions: 
+
+- Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develop data communication to Hardware.
+- Control standard 12V 4pin PWM Fan
+- Output Data visually via LEDs and Seven Segment Display on the Boolean Board

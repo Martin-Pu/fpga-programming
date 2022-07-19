@@ -246,11 +246,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#specification">
-   Specification
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-approach">
    General Approach
   </a>
@@ -271,8 +266,8 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#implementation">
-       Implementation
+      <a class="reference internal nav-link" href="#voltage-to-temperature">
+       Voltage to Temperature
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -319,11 +314,6 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#specification">
-   Specification
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-approach">
    General Approach
   </a>
@@ -344,8 +334,8 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#implementation">
-       Implementation
+      <a class="reference internal nav-link" href="#voltage-to-temperature">
+       Voltage to Temperature
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -384,22 +374,14 @@ title="Print to PDF"
                 
   <section id="approach">
 <h1>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">#</a></h1>
-<section id="specification">
-<h2>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">#</a></h2>
-<p>Develop a Temperature based Fan controller with the following functions:</p>
-<ul class="simple">
-<li><p>Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develop data communication to Hardware.</p></li>
-<li><p>Control standard 12V 4pin PWM Fan</p></li>
-<li><p>Output Data visually via LEDs on the Boolean Board</p></li>
-</ul>
-</section>
 <section id="general-approach">
 <h2>General Approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">#</a></h2>
-<p>To achieve high flexibility for future expandability the Project was structured in Blocks, according to the Block Diagram.
+<p>To achieve high flexibility for the planed future expansion of the project, it was structured in Blocks. This is shown in the Block Diagram.
 Each Block was programmed individually and tested on hardware before moving on to the next Block.
-For the ReadTach Module a extra Simulation-file was used as described later.</p>
+For the ReadTach Module an extra Simulation-file was used as described later.
+For the rest, a general Simulation-file was build to be able to test the general stability of the software.</p>
 <p><img alt="Diagram" src="_images/BlockDiagramm.PNG" /></p>
-<p>The approach was implement all modules in behavioral Verilog where possible.
+<p>All modules were programmed in behavioral Verilog where possible.
 All the Modules were programmed in the Vivado IDE.
 Structural assignments were sparely used to connect wires and registers. The Stretch goals are marked in green.</p>
 </section>
@@ -407,7 +389,7 @@ Structural assignments were sparely used to connect wires and registers. The Str
 <h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">#</a></h2>
 <section id="spi-spimcp3201">
 <h3>SPI (SPIMCP3201)<a class="headerlink" href="#spi-spimcp3201" title="Permalink to this headline">#</a></h3>
-<p>For this module a serial communication bus had to be created. The SPI communication is given in the <a class="reference external" href="http://ww1.microchip.com/downloads/en/devicedoc/21290f.pdf">datasheet</a></p>
+<p>For this module a serial communication bus had to be created. The SPI communication of the MCP3201 is given in the <a class="reference external" href="http://ww1.microchip.com/downloads/en/devicedoc/21290f.pdf">datasheet</a></p>
 <p><img alt="Serial Kommunikation" src="_images/SPICommunication.PNG" /></p>
 <p>According to this timing diagram, communication was implemented.</p>
 <p>A 100 kHz clock divider was used to generate the SPI clock.
@@ -418,15 +400,15 @@ In the second clock divider the samples also get read.</p>
 </section>
 <section id="conversion-modules">
 <h3>Conversion Modules<a class="headerlink" href="#conversion-modules" title="Permalink to this headline">#</a></h3>
-<p>The implementation here was strait forward with behavioral Verilog.
-Tho problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discovered that division is not directly possible in Verilog.
-A workaround approach was chosen where the number is multiplied by 2/x, where x is the divisor. This factor got calculated on a calculator and then entered in the code. The result is then shifted by one bit to the right to divide by two.</p>
+<p>The implementation here was strait forward with behavioral Verilog tho a few problems were encountered, which are described in the following segments.</p>
+<p>Each module has Input data, Output Data, and a clk, at which rate the conversion has to be made.
+Here the standard 100 MHz clock was used as clock, but in hindsight a One Hz Clock would have sufficed, since the Sensor Data is also only refreshed at this frequency.</p>
+<section id="voltage-to-temperature">
+<h4>Voltage to Temperature<a class="headerlink" href="#voltage-to-temperature" title="Permalink to this headline">#</a></h4>
+<p>Problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discovered that division is not directly possible in Verilog.</p>
+<p>A workaround approach was chosen where the number is multiplied by 2/x, where x is the divisor. This factor got calculated on a calculator and then entered in the code. The result is then shifted by one bit to the right to divide by two.</p>
 <p>The formula for the Temperature Sensor had to be calibrated. This was also done as described in <a class="reference external" href="https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en">this</a> article.</p>
 <p>Recapped a potentiometer was used to get the exact resistance value for different Temperatures, and the Value of the ADC was read for those. The potentiometer Value was calibrated with a potentiometer, so the temperature value could only be calibrated to its accuracy.</p>
-<section id="implementation">
-<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h4>
-<p>Each module has Input data, Output Data, and a clk, at which rate the conversion has to be made.
-Here the standard 100 MHz clock was used as clock</p>
 </section>
 <section id="temperature-to-duty-cycle">
 <h4>Temperature to Duty Cycle<a class="headerlink" href="#temperature-to-duty-cycle" title="Permalink to this headline">#</a></h4>
@@ -439,13 +421,15 @@ Here the standard 100 MHz clock was used as clock</p>
 <h3>ReadTach<a class="headerlink" href="#readtach" title="Permalink to this headline">#</a></h3>
 <p>The approach to this Module was to use the external Tach signal received from the fan, as a clk signal for an always block.
 This approach didn't work because it is hardly possible and not recommended to use external signals as clock signals.</p>
-<p>So the standard</p>
+<p>So the standard 100 MHz clock was used. This means, the rising edge had to be manually detected with code.</p>
+<p>The plan is to update the RPM once per second, which only gives a maximum resolution of 30 RPM, but for this use-case it's good enough.</p>
 </section>
 <section id="seven-segment-driver">
 <h3>Seven Segment Driver<a class="headerlink" href="#seven-segment-driver" title="Permalink to this headline">#</a></h3>
 <p>Here the seven Segment Driver developed during project 9 of the digital logic course of <a class="reference external" href="https://www.realdigital.org/doc/0bb5bcc5527bc3161178769ce85e6463">realdigital</a> was used.</p>
 <p>The used architecture is described in this image:</p>
 <p><img alt="SevenSegment" src="_images/SevenSegment.PNG" /></p>
+<p>It is used to display the Temperature and RPM. It alternates between these two values. To achieve this the Seven Segment Module had to be expended by a One Hz Clock Divider and a 1 bit counter.</p>
 </section>
 </section>
 <section id="hardware-circuit">
@@ -453,10 +437,6 @@ This approach didn't work because it is hardly possible and not recommended to u
 <p>For the Hardware circuit inspiration was drawn from an article from [AEQ-Web] <a class="reference external" href="https://www.aeq-web.com/pt1000-temperature-sensor-arduino-lm358-messwandler/?lang=en">1</a>
 The interface to the Fan was implemented according to [specification for PWM Controlled Fans] <a class="reference external" href="https://www.glkinst.com/cables/cable_pics/4_Wire_PWM_Spec.pdf">2</a></p>
 <p>With these information a circuit for the full project could be developed.</p>
-<ul class="simple">
-<li><p>What was your approach to the problem and what is your solution?</p></li>
-<li><p>You should also include approaches that did not work.</p></li>
-</ul>
 </section>
 </section>
 

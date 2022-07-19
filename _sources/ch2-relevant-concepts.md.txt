@@ -2,9 +2,9 @@
 
 ## Voltage Divider 
 
-A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.
+A Voltage Divider is a simple circuit to achieve a certain voltage, when only a higher voltage is available.
 
-It uses the simple principle of a voltage drop across a resistor. 
+It uses the principle of a voltage drop across a resistor. 
 
 <img src="Images/VoltageDivider.PNG " alt="Voltage Divider" width="100"/>
 
@@ -17,9 +17,9 @@ The formula is given as follows: Vout = R2/(R1 \+ R2) \* Vin  where R1 is the up
 
 ADC stands for Analog to Digital Converter. These kind of ICs are used where the analog world meats a Digital Processor or in this case FPGA.
 
-ADCs convert an Analog Voltage into a digital Signal which is then processable by the FPGA. 
+ADCs convert an analog Voltage into a digital Signal to be processed by the FPGA. 
 
-The ADC communicates with the FPGA (or Micro Controller) via a communication protocol like SPI or I2C
+The ADC communicates with the FPGA (or Micro Controller) via a communication protocol like SPI or I2C.
 
 In this work a MCP3201 is used, which is a single channel 12bit ADC that communicates over SPI. The SPI Bus is explained in the following segment.
 
@@ -33,14 +33,16 @@ SPI is a common communication bus to communicate with peripherals like sensors. 
 - MISO (SDI from Master perspective) \- Master In Slave Out
 - CS (CS as an inverted enable signal for the Device) \- Chip Select 
 
-MOSI and MISO are shared data lines, whereas every sensor gets its on CS line.
+MOSI and MISO are shared data lines when multiple sensors are present, whereas every sensor gets its own CS line.
 
-The master in this case the FPGA controls the communication, and chooses with which bus user it wants to communicate with, by pulling its CS Pin Low 
+The master, in this case the FPGA, controls the communication and chooses with which bus user it wants to communicate with, by pulling its CS Pin Low. 
+
+The used ADC in this project sends its data on MISO as soon as CS gets pulled low, without needing a request from the master (FPGA).
 
 
 ## Operational Amplifier
 
-An operational Amplifier does what its name implies - it amplifies. Different surrounding circuits make it a very flexible circuit. 
+An operational Amplifier does what its name implies - it amplifies. Different surrounding circuits can make it a very flexible building block. 
 
 In this project it is simply used to amplify the voltage difference that occurs when the Resistance of the Temperature Element changes and thus the voltage of the voltage divider changes. 
 
@@ -51,32 +53,33 @@ The Open Collector Input Output Pins, are often used in Micro Controllers or ICs
 
 When active the device simply turns on an internal Mosfet, and connects the Pin to ground.
 
-Open Collectors are often used in combination with an external or internal Pull-Up Resistor. To whichever Voltage level the Resistor is connected is the maximum input Voltage for the external device.
+Open Collectors are often used in combination with an external or internal Pull-Up Resistor. The Voltage level the Pull-Up Resistor is connected to, can then be chosen to not exceed the maximum of the listening device.
 
 ![Open Collector on Fan Tach Signal](Images/OpenCollector.PNG "Open Collector")
 
-In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.
+In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware with a 10k Pull-Up Resistor.
 
 This way the Fan outputs a 3.3V to Ground PWM Signal which is readable by the FPGA.
 
-The PWM signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.
+The received signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.
 
 
 ## PT1000
 
-A PT1000 is a resistive temperature element (RTD). It changes its resistance roughly linearly with temperature what makes the conversion simple. 
+A PT1000 is a resistive temperature element (RTD). It changes its resistance approximately linearly with temperature what makes the conversion simple. 
 
-The changing resistance can be converted into a voltage via a voltage divider. 
+The changing resistance can be converted into a voltage via the previously explained voltage divider. 
 
 The 1000 in PT1000 stands for 1000 Ohm Resistance at 0°C.
 
 
 ## Clock Divider
 
-Clock dividers do what their names imply and turn a higher frequency clock into a lower one. 
+Clock dividers do what their names imply and turn a higher frequency clock into a lower frequency one. 
 
-Clock dividers are most often implemented in software. Their simplest implementation is to use a counter and taking the output from the third digit (1:8 Clock divider). Most often an intentional overflow is used to "reset" the counter.
-Alternatively, for a more precise clock the counter can be checked if it has achieved a certain value, and if so reseting the counter. The second approach is used in 
+Clock dividers are most often implemented in software. Their simplest implementation is to use a counter and use the output from the third digit as its new clock (1:8 Clock divider). Here an intentional overflow is used to "reset" the counter.
+
+Alternatively, for a more precise clock the counter can be checked if it has achieved a certain value. If so the counter is reset. In this project mostly this approach is used.
 
 
 ## Seven Segment Display
@@ -87,10 +90,10 @@ For a more in depth information on Seven Segment Displays on the boolean board c
 
 ## PMod 
 
-The PMod interface is a way to connect external peripherals to the boolean board. For this work PModA of the boolean board was used.  
+The PMod interface is a way to connect external peripherals to the boolean board. For this work the PModA connector of the boolean board was used.  
 
 ![PModA](Images/PmodA.png "PModA Pinout")
 
 For more information check out the [boolean Board Reference Manual](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21)
 
-From the reference manual I used the pinout to connect the Connectors in my Constraint File.
+The reference manual was used to get information about the pinout, which had to be used in the constraint file.

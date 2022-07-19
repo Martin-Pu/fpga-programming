@@ -2,9 +2,9 @@
 
 ## General Results
 
-In the end everything worked as intended. 
+In the end everything worked as intended and even 2 of 3 stretch goals were implemented 
 
-The stretch goal of a State Machine was left out, because it seemed unnecessary. 
+The stretch goal of a State Machine was left out, because it seemed unnecessary as only Error Messages would have been useful. 
 
 I uploaded the results to **YouTube**
 
@@ -49,12 +49,13 @@ I will develop and upload the future work in the coming months.
  - the natural overflow of numbers could be used for some of the Clock Dividers
  - Using a multichannel ADC for multiple Temperature sensors could safe on hardware costs.
  - Implementation of a Clock Divider Module, because the same block got used in multiple modules
+ - achieve higher resolution of RPM
 
 ## Using the Files 
 
 ### "The easy way"
 
-If you don't have Vivado already, install it. For that you can follow [this tutorial](https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec) from realdigital.org
+If you don't have Vivado already, install it. You can follow [this tutorial](https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec) from realdigital.org
 
 Then you can clone the project from my [GitHub repository](https://github.com/Martin-Pu/FpgaFanCtrl) or download the zip and unpack it. 
 In the repository you find the project proposal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module. 
