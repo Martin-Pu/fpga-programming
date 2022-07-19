@@ -35,7 +35,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Relevant concepts" href="ch2-relevant-concepts.html" />
-    <link rel="prev" title="Title" href="index.html" />
+    <link rel="prev" title="FPGA Fan Control" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,21 +111,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="ch4-results.html">
    Results
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown_examples.html">
-   Markdown examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="spellcheck.html">
-   Spellcheck
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="editing_video.html">
-   Editing and embedding a video
   </a>
  </li>
 </ul>
@@ -264,7 +249,7 @@ title="Print to PDF"
                 
   <section id="the-problem">
 <h1>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h1>
-<p>A while back, I developed a Fan Control Board for my Computer, which would control the Fan- and Pump-speed via the water-cooling-loop’s temperature.
+<p>A while back, I developed a Fan Control Board for my Computer, which would control the Fan- and Pump-speed via the water-cooling-loop's temperature.
 For the control a Micro Controller was used, but due to the high number of necessary IO Ports (and IO Functions like PWM and interrupts) the choice of Micro Controller was strongly limited.
 An ESP32 was chosen, due to the embedded Bluetooth capability for software access and the relatively high IO count.
 Still the IO-Pins (and PWM-Channels) ended up not being enough (10x Fans with PWM and Tach Signal, 2x Pumps, Sensors, and so on). Status indication could also not be implemented.</p>
@@ -287,7 +272,7 @@ At last a simple control algorithm has to be programmed, which outputs a PWM Sig
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Title</p>
+            <p class="prev-next-title">FPGA Fan Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ch2-relevant-concepts.html" title="next page">

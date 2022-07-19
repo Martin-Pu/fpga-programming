@@ -1,4 +1,5 @@
 # The Problem
+
 A while back, I developed a Fan Control Board for my Computer, which would control the Fan- and Pump-speed via the water-cooling-loop's temperature.
 For the control a Micro Controller was used, but due to the high number of necessary IO Ports (and IO Functions like PWM and interrupts) the choice of Micro Controller was strongly limited. 
 An ESP32 was chosen, due to the embedded Bluetooth capability for software access and the relatively high IO count.
