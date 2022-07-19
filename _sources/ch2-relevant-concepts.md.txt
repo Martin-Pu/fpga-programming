@@ -4,10 +4,13 @@
 
 A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.
 
-![Voltage Divider](Images/VoltageDivider.PNG "Open Collector").
+It uses the simple principle of a Voltage Drop accross a resistor. 
 
-As shown in the Figure above, its just two Resistors in Series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage).
+![Voltage Divider](Images/VoltageDivider.PNG "Voltage Divider").
 
+As shown in the Figure above, its just two Resistors in Series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage, the lower one Ground).
+
+The formula is given as follows: $Vout = {R2 \over {R1 R2} \* Vin}$  where R1 is the upper Resistor and R2 the lower one.
 
 ## ADC
 

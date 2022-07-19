@@ -18,7 +18,7 @@ For the ReadTach Module a extra Simulation-file was used as described later.
 
 The approach was implement all modules in behavioral Verilog where possible.
 All the Modules were programmed in the Vivado IDE.
-Structural assignments were sparely used to connect wires and registers. 
+Structural assignments were sparely used to connect wires and registers. The Stretch goals are marked in green.
 
 
 ## Individual Modules 
@@ -77,7 +77,7 @@ Here the seven Segment Driver developed during project 9 of the digital logic co
 
 The used architecture is described in this image:
 
-![SevenSegment]](Images/SevenSegment.png "Seven Segment Architecture")
+![SevenSegment](Images/SevenSegment.png "Seven Segment Architecture")
 
 ## Hardware Circuit
 
