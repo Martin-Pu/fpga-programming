@@ -285,6 +285,11 @@ title="Print to PDF"
    Seven Segment Display
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pmod">
+   PMod
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -344,6 +349,11 @@ title="Print to PDF"
    Seven Segment Display
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pmod">
+   PMod
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -359,24 +369,35 @@ title="Print to PDF"
 <section id="voltage-divider">
 <h2>Voltage Divider<a class="headerlink" href="#voltage-divider" title="Permalink to this headline">#</a></h2>
 <p>A Voltage Divider is a simple is a simple circuit to achieve a certain voltage, when only a higher voltage is available.</p>
-<p>It uses the simple principle of a Voltage Drop accross a resistor.</p>
+<p>It uses the simple principle of a voltage drop across a resistor.</p>
 <p><img alt="Voltage Divider" src="_images/VoltageDivider.PNG" />.</p>
-<p>As shown in the Figure above, its just two Resistors in Series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage, the lower one Ground).</p>
-<p>The formula is given as follows: $Vout = {R2 \over {R1 R2} * Vin}$  where R1 is the upper Resistor and R2 the lower one.</p>
+<p>As shown in the figure above, its just two resistors in series, and the output is taken from the bottom two wires that exit to the right (the upper one is the reduced Voltage, the lower one Ground).</p>
+<p>The formula is given as follows: Vout = R2/(R1 + R2) * Vin  where R1 is the upper Resistor and R2 the lower one.</p>
 </section>
 <section id="adc">
 <h2>ADC<a class="headerlink" href="#adc" title="Permalink to this headline">#</a></h2>
 <p>ADC stands for Analog to Digital Converter. These kind of ICs are used where the analog world meats a Digital Processor or in this case FPGA.</p>
-<p>ADCs convert an Anolog Voltage into a digital Signal which is then processible by the FPGA.</p>
-<p>The ADC communicates with the FPGA (or Micro Controller) via a communication Protokoll like SPI or I2C</p>
-<p>In this work a MCP3201 is used, which is a single Channel 12bit ADC that communicates over SPI. The SPI Bus is explained in the following segment.</p>
+<p>ADCs convert an Analog Voltage into a digital Signal which is then processable by the FPGA.</p>
+<p>The ADC communicates with the FPGA (or Micro Controller) via a communication protocol like SPI or I2C</p>
+<p>In this work a MCP3201 is used, which is a single channel 12bit ADC that communicates over SPI. The SPI Bus is explained in the following segment.</p>
 </section>
 <section id="spi">
 <h2>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">#</a></h2>
-<p><img alt="SPI Communication" src="_images/SPICommunication.PNG" /></p>
+<p>SPI is a common communication bus to communicate with peripherals like sensors. It has 5 major connections:</p>
+<ul class="simple">
+<li><p>Vin</p></li>
+<li><p>Ground</p></li>
+<li><p>MOSI (SDO from Master perspective) - Master Out Slave In</p></li>
+<li><p>MISO (SDI from Master perspective) - Master In Slave Out</p></li>
+<li><p>CS (CS as an inverted enable signal for the Device) - Chip Select</p></li>
+</ul>
+<p>MOSI and MISO are shared data lines, whereas every sensor gets its on CS line.</p>
+<p>The master in this case the FPGA controls the communication, and chooses with which bus user it wants to communicate with, by pulling its CS Pin Low</p>
 </section>
 <section id="operational-amplifier">
 <h2>Operational Amplifier<a class="headerlink" href="#operational-amplifier" title="Permalink to this headline">#</a></h2>
+<p>An operational Amplifier does what its name implies - it amplifies. Different surrounding circuits make it a very flexible circuit.</p>
+<p>In this project it is simply used to amplify the voltage difference that occurs when the Resistance of the Temperature Element changes and thus the voltage of the voltage divider changes.</p>
 </section>
 <section id="open-collector-io-tach-signal-of-fan">
 <h2>Open Collector IO / Tach Signal of Fan<a class="headerlink" href="#open-collector-io-tach-signal-of-fan" title="Permalink to this headline">#</a></h2>
@@ -386,17 +407,31 @@ title="Print to PDF"
 <p><img alt="Open Collector on Fan Tach Signal" src="Images/OpenCollector.PNG" /></p>
 <p>In this project, the fans have Open Collector Pins on the Tach signal. The Voltage is then pulled up to 3.3V in Hardware.</p>
 <p>This way the Fan outputs a 3.3V to Ground PWM Signal which is readable by the FPGA.</p>
-<p>The PWM Signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.</p>
+<p>The PWM signal frequency also has to be divided in half, because the magnetic sensor in the Fan gets activated twice per Rotation of the fan.</p>
 </section>
 <section id="pt1000">
 <h2>PT1000<a class="headerlink" href="#pt1000" title="Permalink to this headline">#</a></h2>
+<p>A PT1000 is a resistive temperature element (RTD). It changes its resistance roughly linearly with temperature what makes the conversion simple.</p>
+<p>The changing resistance can be converted into a voltage via a voltage divider.</p>
+<p>The 1000 in PT1000 stands for 1000 Ohm Resistance at 0°C.</p>
 </section>
 <section id="clock-divider">
 <h2>Clock Divider<a class="headerlink" href="#clock-divider" title="Permalink to this headline">#</a></h2>
+<p>Clock dividers do what their names imply and turn a higher frequency clock into a lower one.</p>
+<p>Clock dividers are most often implemented in software. Their simplest implementation is to use a counter and taking the output from the third digit (1:8 Clock divider). Most often an intentional overflow is used to &quot;reset&quot; the counter.
+Alternatively, for a more precise clock the counter can be checked if it has achieved a certain value, and if so reseting the counter. The second approach is used in</p>
 </section>
 <section id="seven-segment-display">
 <h2>Seven Segment Display<a class="headerlink" href="#seven-segment-display" title="Permalink to this headline">#</a></h2>
-<p>Introduce the relevant concepts to understand the problem and your solution.</p>
+<p>A Seven Segment Display is a Display with only 7 (or 8 with decimal point) inputs. It is used most often used to Display (hexadecimal) numbers or error codes, by illuminating different segments.</p>
+<p>For a more in depth information on Seven Segment Displays on the boolean board check out the <a class="reference external" href="https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21">boolean Board Reference Manual</a></p>
+</section>
+<section id="pmod">
+<h2>PMod<a class="headerlink" href="#pmod" title="Permalink to this headline">#</a></h2>
+<p>The PMod interface is a way to connect external peripherals to the boolean board. For this work PModA of the boolean board was used.</p>
+<p><img alt="PModA" src="_images/PModA.png" /></p>
+<p>For more information check out the <a class="reference external" href="https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21">boolean Board Reference Manual</a></p>
+<p>From the reference manual I used the pinout to connect the Connectors in my Constraint File.</p>
 </section>
 </section>
 

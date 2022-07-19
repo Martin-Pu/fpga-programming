@@ -1,6 +1,6 @@
 # FPGA Fan Control
 
-In this Documentation a Temperature based Fan Controller for a FPGA is developed on the boolean board from [realdigtial.org](realdigtial.org).
+In this Documentation a Temperature based Fan Controller for a FPGA is developed on the boolean board from [realdigtial](https://www.realdigital.org/).
 
 The requirements from the digital course were uploaded to a [repository](https://mygit.th-deg.de/mp03422/fpga-programming-projects)
 

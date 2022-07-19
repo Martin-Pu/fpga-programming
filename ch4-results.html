@@ -34,7 +34,6 @@
     <link rel="shortcut icon" href="_static/apple_notes_icon_public_domain_via_wikimedia_commons.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown examples" href="markdown_examples.html" />
     <link rel="prev" title="Approach" href="ch3-approach.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,21 +110,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Results
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown_examples.html">
-   Markdown examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="spellcheck.html">
-   Spellcheck
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="editing_video.html">
-   Editing and embedding a video
   </a>
  </li>
 </ul>
@@ -266,6 +250,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schematics">
+     Schematics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spi-spimcp3201">
      SPI (SPIMCP3201)
     </a>
@@ -283,8 +272,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#improovement-ideas">
-   Improovement Ideas
+  <a class="reference internal nav-link" href="#improvement-ideas">
+   Improvement Ideas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -329,6 +318,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schematics">
+     Schematics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spi-spimcp3201">
      SPI (SPIMCP3201)
     </a>
@@ -346,8 +340,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#improovement-ideas">
-   Improovement Ideas
+  <a class="reference internal nav-link" href="#improvement-ideas">
+   Improvement Ideas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -385,27 +379,34 @@ title="Print to PDF"
 <p>The stretch goal of a State Machine was left out, because it seemed unnecessary.</p>
 <p>I uploaded the results to <strong>YouTube</strong></p>
 <p><a class="reference external" href="https://youtu.be/ZYJzqI10RaQ"><img alt="Youtube Video" src="https://img.youtube.com/vi/ZYJzqI10RaQ/0.jpg" /></a></p>
+<section id="schematics">
+<h3>Schematics<a class="headerlink" href="#schematics" title="Permalink to this headline">#</a></h3>
+<p>Using the described approach, the following schematics for the whole systems was built:</p>
+<p><img alt="Schematics" src="_images/FPGAFinalProjectSchematics.png" /></p>
+<p>With that, the Testsetup was built in hardware:</p>
+<p><img alt="Testsetup" src="_images/Testsetup.png" /></p>
+</section>
 <section id="spi-spimcp3201">
 <h3>SPI (SPIMCP3201)<a class="headerlink" href="#spi-spimcp3201" title="Permalink to this headline">#</a></h3>
 <p>The FPGA can communicate to the MCP3201 ADC via SPI. By pulling the CS Pin low, the ADC sends its 12 bit data back over the serial MISO line.</p>
-<p>Another clock divider had to be used, to shift the clock to the right so the CS Pin and the clk Pin wouldn't go low at the same time. This could lead to a potential glitch due a time that is refered in the datasheet as Tsucs.</p>
+<p>Another clock divider had to be used, to shift the clock to the right so the CS Pin and the clk Pin wouldn't go low at the same time. This could lead to a potential glitch due a time that is revered in the datasheet as Tsucs.</p>
 <p>The Communication was observed and verified via a logic analyzer:</p>
 <p><img alt="Logic Analyzer SPI" src="_images/LogicAnalyzerSPI.png" /></p>
 </section>
 <section id="conversion-modules">
 <h3>Conversion Modules<a class="headerlink" href="#conversion-modules" title="Permalink to this headline">#</a></h3>
-<p>The Temperature was read correctly by verifying it with another househould temperature.</p>
+<p>The Temperature was read correctly by verifying it with another household temperature sensor.</p>
 </section>
 </section>
 <section id="takeaways">
 <h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">#</a></h2>
-<p>In this project the basis for a future complex Watercooling Loop controler has been built. The developed modules can be used to expand to more than just one Fan, Temperature Sensors, and pumps.</p>
-<p>A few problems have been encounterd while developing the ReadTach and Conversion Modules, which deepend my understanding of the Vivado and Verilog development environment.</p>
+<p>In this project the basis for a future complex Watercooling Loop controller has been built. The developed modules can be used to expand to more than just one Fan, Temperature Sensors, and pumps.</p>
+<p>A few problems have been encountered while developing the ReadTach and Conversion Modules, which deepened my understanding of the Vivado and Verilog development environment.</p>
 <p>In Future work, a more complex Control-Feedback-Loop will be developed to really take advantage of the sensor data, and take it above everything else that currently exists in the market.</p>
 <p>I will develop and upload the future work in the coming months.</p>
 </section>
-<section id="improovement-ideas">
-<h2>Improovement Ideas<a class="headerlink" href="#improovement-ideas" title="Permalink to this headline">#</a></h2>
+<section id="improvement-ideas">
+<h2>Improvement Ideas<a class="headerlink" href="#improvement-ideas" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>the natural overflow of numbers could be used for some of the Clock Dividers</p></li>
 <li><p>Using a multichannel ADC for multiple Temperature sensors could safe on hardware costs.</p></li>
@@ -416,14 +417,14 @@ title="Print to PDF"
 <h2>Using the Files<a class="headerlink" href="#using-the-files" title="Permalink to this headline">#</a></h2>
 <section id="the-easy-way">
 <h3>&quot;The easy way&quot;<a class="headerlink" href="#the-easy-way" title="Permalink to this headline">#</a></h3>
-<p>If you don't have Vivado allready, install it. For that you can follow <a class="reference external" href="https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec">this tutorial</a> from realdigital.org</p>
+<p>If you don't have Vivado already, install it. For that you can follow <a class="reference external" href="https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec">this tutorial</a> from realdigital.org</p>
 <p>Then you can clone the project from my <a class="reference external" href="https://github.com/Martin-Pu/FpgaFanCtrl">GitHub repository</a> or download the zip and unpack it.
-In the repository you find the project propsal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module.
-The FinalProject File contains the Code which was presented in the Video. You can open it in the IDE by opening the FinalProject.xpr file. To programm the board you have to Open the Hardware Manager in the IDE (on the left), connect to the Boolean Board, and then upload the .bit file, located in <em>FpgaFanCtrl\FinalProject\FinalProject.runs\impl_1</em></p>
+In the repository you find the project proposal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module.
+The FinalProject File contains the Code which was presented in the Video. You can open it in the IDE by opening the FinalProject.xpr file. To program the board you have to Open the Hardware Manager in the IDE (on the left), connect to the Boolean Board, and then upload the .bit file, located in <em>FpgaFanCtrl\FinalProject\FinalProject.runs\impl_1</em></p>
 </section>
 <section id="the-hard-way">
 <h3>&quot;The hard way&quot;<a class="headerlink" href="#the-hard-way" title="Permalink to this headline">#</a></h3>
-<p>You can use a makefile to generate the .bit file and upload it to the Boolean automaticaly. For that you can follow the <a class="reference external" href="https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project">instructions</a> from my professors Q&amp;A page.</p>
+<p>You can use a makefile to generate the .bit file and upload it to the Boolean automatically. For that you can follow the <a class="reference external" href="https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project">instructions</a> from my professors Q&amp;A page.</p>
 <p>Depending on your skillset, this might be the easy way for you.</p>
 </section>
 </section>
@@ -443,13 +444,6 @@ The FinalProject File contains the Code which was presented in the Video. You ca
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Approach</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="markdown_examples.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown examples</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

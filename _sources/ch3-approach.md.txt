@@ -4,14 +4,14 @@
 
 Develop a Temperature based Fan controller with the following functions: 
 
-- Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develope data communication to Hardware.
+- Reading a Temperature Value from a sensor - This includes: Developing a Hardware circuit + Develop data communication to Hardware.
 - Control standard 12V 4pin PWM Fan
 - Output Data visually via LEDs on the Boolean Board
 
 ## General Approach
 
-To achieve high flexibilty for future expandability the Project was structured in Blocks, according to the Block Diagram. 
-Each Block was programmed individually and tested on hardware before mooving on to the next Block. 
+To achieve high flexibility for future expandability the Project was structured in Blocks, according to the Block Diagram. 
+Each Block was programmed individually and tested on hardware before moving on to the next Block. 
 For the ReadTach Module a extra Simulation-file was used as described later.
 
 ![Diagram](Images/BlockDiagramm.PNG "Block Diagram")
@@ -29,23 +29,23 @@ For this module a serial communication bus had to be created. The SPI communicat
 
 ![Serial Kommunikation](Images/SPICommunication.PNG "Serial Communication")
 
-According to this timing diagramm, comunication was implemented.
+According to this timing diagram, communication was implemented.
 
 A 100 kHz clock divider was used to generate the SPI clock. 
 Another clock divider was used to generate a 1 Hz clock to sample the ADC once per second.  
 In the second clock divider the samples also get read.
 
-Because the ADC needs time to sample the data, the first two bits are floating and the third is a Null bit. Thats why in the code not all the 16 bit values of the received data are used. The last clock cycle is used to power down the ADC. 
+Because the ADC needs time to sample the data, the first two bits are floating and the third is a Null bit. That's why in the code not all the 16 bit values of the received data are used. The last clock cycle is used to power down the ADC. 
 
 For debugging the bottom (0-11) LEDs were connected to the raw Data received by the ADC. 
 
 ### Conversion Modules 
 
-The implementation here was straigt forward with behavioral Verilog.
-Tho problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discoverd that division is not directly possible in Verilog.
+The implementation here was strait forward with behavioral Verilog.
+Tho problems were encountered when trying to divide by numbers, which is required by some conversion-formulas. It was discovered that division is not directly possible in Verilog.
 A workaround approach was chosen where the number is multiplied by 2/x, where x is the divisor. This factor got calculated on a calculator and then entered in the code. The result is then shifted by one bit to the right to divide by two.
 
-The formula for the Temperature Sensore had to be callitbrated. This was also done as described in [this][1] article. 
+The formula for the Temperature Sensor had to be calibrated. This was also done as described in [this][1] article. 
 
 Recapped a potentiometer was used to get the exact resistance value for different Temperatures, and the Value of the ADC was read for those. The potentiometer Value was calibrated with a potentiometer, so the temperature value could only be calibrated to its accuracy.
 
@@ -73,7 +73,7 @@ So the standard
 
 ### Seven Segment Driver
 
-Here the seven Segment Driver developed during project 9 of the digital logic course of realdigital.org was used. 
+Here the seven Segment Driver developed during project 9 of the digital logic course of [realdigital](https://www.realdigital.org/doc/0bb5bcc5527bc3161178769ce85e6463) was used. 
 
 The used architecture is described in this image:
 
