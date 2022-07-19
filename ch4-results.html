@@ -238,12 +238,58 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Results
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-files">
+   Using the Files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-easy-way">
+     "The easy way"
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-hard-way">
+     "The hard way"
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -255,6 +301,41 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Results
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-files">
+   Using the Files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-easy-way">
+     "The easy way"
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-hard-way">
+     "The hard way"
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -268,8 +349,28 @@ title="Print to PDF"
 <p>The stretch goal of a State Machine was left out, because it seemed unnecessary.</p>
 <p>I uploaded the results to <strong>YouTube</strong></p>
 <p><a class="reference external" href="https://youtu.be/ZYJzqI10RaQ"><img alt="Youtube Video" src="https://img.youtube.com/vi/ZYJzqI10RaQ/0.jpg" /></a></p>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"><img alt="Everything Is AWESOME" src="https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg" /></a></p>
-<p>Results and takeaways.</p>
+</section>
+<section id="takeaways">
+<h1>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">#</a></h1>
+<p>In this project the basis for a future complex Watercooling Loop controler has been built. The developed modules can be used to expand to more than just one Fan, Temperature Sensors, and pumps.
+A few problems have been encounterd while developing the ReadTach and Conversion Modules, which deepend my understanding of the Vivado and Verilog development environment.</p>
+<p>In Future work, a more complex Control-Feedback-Loop will be developed to really take advantage of the sensor data, and take it above everything else that currently exists in the market.</p>
+<p>I will develop and upload the future work in the coming months.</p>
+</section>
+<section id="using-the-files">
+<h1>Using the Files<a class="headerlink" href="#using-the-files" title="Permalink to this headline">#</a></h1>
+<section id="the-easy-way">
+<h2>&quot;The easy way&quot;<a class="headerlink" href="#the-easy-way" title="Permalink to this headline">#</a></h2>
+<p>If you don't have Vivado allready, install it. For that you can follow <a class="reference external" href="https://www.realdigital.org/doc/1fd3322461ac4bcc1fcd6bcc6c5907ec">this tutorial</a> from realdigital.org</p>
+<p>Then you can clone the project from my <a class="reference external" href="https://github.com/Martin-Pu/FpgaFanCtrl">GitHub repository</a> or download the zip and unpack it.
+In the repository you find the project propsal in the ReadMe file, and two Vivado Project files. The FinalProject_ReadTach file should not be necessary, because it was only used to test and simulate the ReadTach module.
+The FinalProject File contains the Code which was presented in the Video. You can open it in the IDE by opening the FinalProject.xpr file. To programm the board you have to Open the Hardware Manager in the IDE (on the left), connect to the Boolean Board, and then upload the .bit file, located in <em>FpgaFanCtrl\FinalProject\FinalProject.runs\impl_1</em></p>
+</section>
+<section id="the-hard-way">
+<h2>&quot;The hard way&quot;<a class="headerlink" href="#the-hard-way" title="Permalink to this headline">#</a></h2>
+<p>You can use a makefile to generate the .bit file and upload it to the Boolean automaticly. For that you can follow the <a class="reference external" href="https://lsi.th-deg.de/digital-logic-notes/questions-from-students.html#including-building-usage-instructions-in-the-project">instructions</a> from my proffesors Q&amp;A page.</p>
+<p>Depending on your skillset, for you this might be the easy way.</p>
+</section>
 </section>
 
 

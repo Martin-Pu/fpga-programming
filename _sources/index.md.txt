@@ -1,6 +1,4 @@
-# Title
-
-This is a Sphinx-book template that you can use for your report. Markdown examples are included.
+# FPGA Temperature based Fan Control
 
 ```{toctree}
 :maxdepth: 2
